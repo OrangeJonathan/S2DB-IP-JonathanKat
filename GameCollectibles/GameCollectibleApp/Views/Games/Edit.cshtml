@@ -1,0 +1,27 @@
+﻿@model GameCollectiblesCore.Games.Game
+@{
+	ViewData["Title"] = "Edit Games";
+}
+
+<div class="ml-10 mt-10 flex-auto justify-center items-center">
+    <form action="@Url.Action("EditGame", "Games")" method="post"> 
+        <div class="mb-4 w-25 ">
+            <label class="block text-gray-700 font-bold mb-2 flex justify-center" for="gameTitle">
+                Game Name
+            </label>
+            <input class="flex justify-center shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="gameTitle" rows="2" placeholder="" value="@Model.gameTitle">
+        </div>
+        <div class="mb-6 w-25">
+            <label class="block text-gray-700 font-bold mb-2 flex justify-center" for="gameDescription">
+                Game Description'
+            </label>
+            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="gameDescription" rows="4" placeholder="">@Model.gameDescription</textarea>
+        </div>
+        <div class="flex items-center justify-between mt-4">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Update
+            </button>
+        </div>
+        <textarea class="invisible"name="gameID">@Model.gameID</textarea>
+    </form>
+</div>

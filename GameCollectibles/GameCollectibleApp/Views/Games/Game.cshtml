@@ -1,0 +1,62 @@
+﻿@model GameCollectibleApp.Models.GameViewModel
+@{
+	ViewData["Title"] = "Game Details";
+}
+<style>
+	.CrossCheck-size{
+			width: 15px;
+			height: 15px;
+			margin-left: 15px;
+		}
+
+</style>
+
+
+<div class="max-w-6xl w-full ml-20 ">
+	<div class="text-center text-3xl mt-3">
+		@Model.game.gameTitle
+	</div>
+	<div class="text-center text-xl">
+		@Model.game.gameDescription
+	</div>
+	<div class="">
+		<button class="py-2 px-4 bg-yellow-200 hover:bg-yellow-400 text-white font-semibold rounded-lg shadow-md transition duration-300" onclick="location.href='@Url.Action("Edit", "Games", new { gameID = Model.game.gameID })'">Edit</button>
+		<form action="@Url.Action("Delete", "Games", new { gameID = Model.game.gameID })" method="post">
+         	<input type="hidden" name="gameID" value="@Model.game.gameID" />
+            <button class="py-2 px-4 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg shadow-md transition duration-300" type="submit">Delete</button>
+    	</form>
+	</div>
+	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 ">
+    @foreach (var category in Model.categories)
+    {
+        <div class="bg-white shadow sm:rounded-lg">
+            <div class="px-4 py-5 sm:px-6 bg-gray-50">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">@category.categoryName</h3>
+            </div>
+            <div class="border-t border-gray-200">
+                <dl>
+                    @foreach (var collectible in category.collectibles)
+					{
+						<p title="@collectible.collectibleDescription">
+							@collectible.collectibleName
+							@if (collectible.isCollected)
+							{
+								<input class="CrossCheck-size" type="image" src="~/images/greenCheckmark.png" onclick="location.href='@Url.Action("ToggleCollected", "Games")?collectibleID=@collectible.collectibleID&isToggledCollected=@collectible.isCollected&categoryID=@category.categoryID&gameId=@Model.game.gameID'" /> 
+							}
+							else
+							{
+								<input class="CrossCheck-size" type="image" src="~/images/redX.png" onclick="location.href='@Url.Action("ToggleCollected", "Games")?collectibleID=@collectible.collectibleID&isToggledCollected=@collectible.isCollected&categoryID=@category.categoryID&gameId=@Model.game.gameID'" /> 
+							}
+							
+						</p>
+						
+					}
+					
+                    <button class="h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" onclick="location.href='@Url.Action("Create", "Collectibles", new { categoryID = category.categoryID, gameID = @Model.game.gameID })'">Add Collectible</button>
+                </dl>
+            </div>
+        </div>
+    }
+    <button class="h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" onclick="location.href='@Url.Action("Create", "Categories", new { gameID = Model.game.gameID})'">Create Category</button>
+</div>
+</div>

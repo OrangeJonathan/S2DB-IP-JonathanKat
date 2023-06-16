@@ -1,0 +1,29 @@
+﻿@using GameCollectibleApp.Models
+@model UsersViewModel
+
+@{
+	ViewData["Title"] = "Debug Users";
+}
+<div>
+    <table>
+        <th>UserID</th>
+        <th>UserName</th>
+        <th>Select</th>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.userID</td>
+                <td>@user.userName</td>
+                <td>
+                    <form method="post" action="@Url.Action("SelectUser", "Users")">
+                        <input type='hidden' name="userName" value= "@user.userName" />
+                        <input type="hidden" name="userId" value="@user.userID" />
+                        <button type="submit" class="py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow-md transition duration-300">Select</button>
+                    </form>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div class="text-2xl pl-20">Current User: @Model.SelectedUserName</div>

@@ -1,0 +1,11 @@
+﻿@model GameErrorViewModel
+@{
+    ViewData["Title"] = "ERROR, ERROR";
+}
+
+  <div class="max-w-md bg-white p-8 rounded shadow-lg">
+    <h1 class="text-2xl font-bold mb-4">Error Occurred</h1>
+    <p class="text-red-500">An error has occurred while processing your request.</p>
+    <p class="text-red-500">@Model.errorMessage</p>
+    <p class="mt-4">Please try again</p>
+  </div>

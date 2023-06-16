@@ -1,0 +1,29 @@
+﻿@model CollectibleViewModel
+    
+@{
+    ViewData["Title"] = "Create Collectible";
+}
+
+<div class="ml-10 mt-10 flex-auto justify-center items-center">
+    <form action="@Url.Action("AddCollectible", "Collectibles")" method="post">
+        <div class="mb-4 w-25 ">
+            <label class="block text-gray-700 font-bold mb-2 flex justify-center" for="collectibleName">
+                Collectible Name
+            </label>
+            <input class="flex justify-center shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="collectibleName" rows="2" placeholder="Enter Collectible name">
+        </div>
+        <div class="mb-6 w-25">
+            <label class="block text-gray-700 font-bold mb-2 flex justify-center" for="gameDescription">
+                Collectible Description
+            </label>
+            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="collectibleDescription" rows="2" placeholder="Enter Collectible description"></textarea>
+        </div>
+        <input type="hidden" name="categoryID" value="@Model.categoryID">
+        <input type="hidden" name="gameID" value="@Model.gameID">
+        <div class="flex items-center justify-between mt-4">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Add Collectible
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GameCollectibleApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GameCollectibleApp.styles.css" asp-append-version="true" />
+    <environment names="Development">
+        <script type="module" src="http://localhost:5173/@@vite/client"></script>
+        <script type="module" src="http://localhost:5173/wwwroot/js/site.js"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        <script type="module" asp-src-include="~/build/assets/main-.js"></script>
+        <link rel="stylesheet" asp-href-include="~/build/assets/site-.css">
+    </environment>
+</head>
+<body class="flex flex-wrap">
+    
+    <div class="min-h-screen siderbar bg-orange-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out" >
+
+
+        <a href="#" class="text-white flex items-center space-x-2 px-4 hover:text-black">
+            <svg class="h-8 w-8 text-center" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.39 48.39 0 01-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 01-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 00-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 01-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 00.657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 01-.349-1.003c0-1.035 1.008-1.875 2.25-1.875 1.243 0 2.25.84 2.25 1.875 0 .369-.128.713-.349 1.003-.215.283-.4.604-.4.959v0c0 .333.277.599.61.58a48.1 48.1 0 005.427-.63 48.05 48.05 0 00.582-4.717.532.532 0 00-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.96.401v0a.656.656 0 00.658-.663 48.422 48.422 0 00-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 01-.61-.58v0z" />
+            </svg>
+            <span class="font-extrabold">Game Collectibles</span>
+        </a>
+
+
+        <nav>
+            <a href="/home/index" class="text-white block py-2.5 px-4 rounded transition duration-200 hover:bg-orange-700 hover:text-white">Home</a>
+            <a href="/games/index" class="text-white block py-2.5 px-4 rounded transition duration-200 hover:bg-orange-700 hover:text-white">Games</a>
+            <a href="/home/index" class="text-white block py-2.5 px-4 rounded transition duration-200 hover:bg-orange-700 hover:text-white">About</a>
+            <a href="/users/index" class="text-white block py-2.5 px-4 rounded transition duration-200 hover:bg-orange-700 hover:text-white">Debug Users</a>
+            <p></p>
+        </nav>
+    </div>
+    @RenderBody()
+</body>
+</html>
